@@ -1,5 +1,4 @@
 import discord
-from discord import app_commands
 from discord.ext import commands
 from database import User, session
 import random
@@ -24,8 +23,8 @@ class Cmdbotlevel(commands.Cog):
             session.add(userdb)
             session.commit()
 
-        start = 750 - math.floor(userdb.level / 10)
-        end = 1250 + math.floor(userdb.level / 10)
+        start = 75 - math.floor(userdb.level / 10)
+        end = 125 + math.floor(userdb.level / 10)
         exp_per_message = random.randint(start, end)
         userdb.chatcount += 1
         userdb.allexp += exp_per_message
@@ -83,38 +82,6 @@ class Cmdbotlevel(commands.Cog):
                     userdb.exp -= 10000
 
         print(f"{userdb.exp}")
-
-    @app_commands.command(name="crank", description="コマ研レベルの表示")
-    @app_commands.describe(target="ユーザー名")
-    async def omikuzicom(self, interaction: discord.Interaction, target: discord.Member = None):
-        if target is None:
-            userdb = session.query(User).filter_by(userid=interaction.user.id).first()
-            if not userdb:
-                await interaction.response.send_message("あなたはまだ経験値を獲得していません\n### 喋ろう!!!!!")
-            else:
-                level_embed = discord.Embed(
-                    title=f"{interaction.user.display_name}のレベル",
-                    description=f"```py\nレベル: {userdb.level} lv\n経験値: {userdb.exp} exp\n{userdb.level + 1}lvまであと {10000 - userdb.exp} exp\n```",
-                    color=0x6fb7ff
-                )
-                level_embed.add_field(name="総獲得経験値量", value=f"```py\n{userdb.alladdexp} exp\n```", inline=True)
-                level_embed.add_field(name="総損失経験値量", value=f"```py\n{userdb.allremoveexp} exp\n```", inline=True)
-                level_embed.set_author(name=interaction.user.display_name, icon_url=interaction.user.avatar.url)
-                await interaction.response.send_message(embed=level_embed)
-        else:
-            targetdb = session.query(User).filter_by(userid=target.id).first()
-            if not targetdb:
-                await interaction.response.send_message(f"`{target.display_name}`はまだ経験値を獲得していません\n### 喋らせよう!!!!!(笑)")
-            else:
-                level_embed = discord.Embed(
-                    title=f"{target.display_name}のレベル",
-                    description=f"```py\nレベル: {targetdb.level} lv\n経験値: {targetdb.exp} exp\n{targetdb.level + 1}lvまであと {10000 - targetdb.exp} exp\n```",
-                    color=0x6fb7ff
-                )
-                level_embed.add_field(name="総獲得経験値量", value=f"```py\n{targetdb.alladdexp} exp\n```", inline=True)
-                level_embed.add_field(name="総損失経験値量", value=f"```py\n{targetdb.allremoveexp} exp\n```", inline=True)
-                level_embed.set_author(name=target.display_name, icon_url=target.avatar.url)
-                await interaction.response.send_message(embed=level_embed)
 
 
 async def setup(bot: commands.Bot):
