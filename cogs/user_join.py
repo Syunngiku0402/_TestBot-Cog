@@ -9,6 +9,8 @@ class UserJoin(commands.Cog):
 
     @commands.Cog.listener("on_member_join")
     async def on_member_join(self, member: discord.Member):
+        if member.guild.id != config.kawaemoserver:
+            return
         join_embed = discord.Embed(
             description=f"# {member.mention}さん\n**じーにあすさばへようこそ!!**"
         )
