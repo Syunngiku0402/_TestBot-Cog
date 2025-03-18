@@ -22,6 +22,7 @@ class Cmdbotlevel(commands.Cog):
             userdb = User(userid=message.author.id, username=message.author.name)
             session.add(userdb)
             session.commit()
+            return
 
         start = 75 - math.floor(userdb.level / 10)
         end = 125 + math.floor(userdb.level / 10)
@@ -80,7 +81,7 @@ class Cmdbotlevel(commands.Cog):
                 if userdb.exp >= 10000:
                     userdb.level += 1
                     userdb.exp -= 10000
-
+        session.commit()
         print(f"{userdb.exp}")
 
 
