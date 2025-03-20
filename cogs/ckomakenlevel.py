@@ -28,7 +28,6 @@ class Cmdbotlevel(commands.Cog):
         end = 125 + math.floor(userdb.level / 10)
         exp_per_message = random.randint(start, end)
         userdb.chatcount += 1
-        userdb.allexp += exp_per_message
         userdb.alladdexp += exp_per_message
         userdb.exp += exp_per_message
 
@@ -41,7 +40,6 @@ class Cmdbotlevel(commands.Cog):
         if message.channel.id == config.selfintroductionch:  # 書き換えること
             if userdb.selfintro is False:
                 userdb.selfintro = True
-                userdb.allexp += 200
                 userdb.alladdexp += 200
                 userdb.exp += 200
 
@@ -52,7 +50,6 @@ class Cmdbotlevel(commands.Cog):
         elif message.channel.id == config.question_channels:
             if userdb.question is False:
                 userdb.question = True
-                userdb.allexp += 200
                 userdb.alladdexp += 200
                 userdb.exp += 200
 
@@ -63,7 +60,6 @@ class Cmdbotlevel(commands.Cog):
         elif message.channel.id == config.freechat:  # 書き換えること
             if userdb.freechat is False:
                 userdb.freechat = True
-                userdb.allexp += 200
                 userdb.alladdexp += 200
                 userdb.exp += 200
 
@@ -74,7 +70,6 @@ class Cmdbotlevel(commands.Cog):
         elif message.channel.id == config.anotherch:  # 書き換えること
             if userdb.anotherch is False:
                 userdb.anotherch = True
-                userdb.allexp += 200
                 userdb.alladdexp += 200
                 userdb.exp += 200
 
