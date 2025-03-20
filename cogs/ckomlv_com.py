@@ -75,7 +75,6 @@ class Cmdbotlevelcom(commands.Cog):
             targetdb.exp -= 10000
         session.commit()
         await interaction.response.send_message(f"{target.mention}に{givexp}与えました", silent=True)
-        # 作成中
 
     @app_commands.command(name="setleveling", description="【運営用】参加者のLv/exp変更)")
     @app_commands.describe(choice="選択肢", terget="変更する人", level="レベル", experience="経験値")
