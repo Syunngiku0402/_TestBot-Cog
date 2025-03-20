@@ -28,7 +28,7 @@ class LiveButton(discord.ui.View):  # 抽選コマンド
             await interaction.response.send_message("送信しました", ephemeral=True)
             send_channel = await self.bot.fetch_channel(config.livenotice_ch)
             await send_channel.send(file=file_17liveicon, embed=mainlivestart_embed)
-    
+
     @discord.ui.button(label="削除", style=ButtonStyle.blurple, custom_id="main-live")
     @discord.ui.checks.has_role(config.administrater_role_id)
     async def pressedLiveButton(self, interaction: discord.Interaction, button: discord.ui.button):
