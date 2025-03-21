@@ -57,6 +57,9 @@ class Cmdbotlevelcom(commands.Cog):
             await interaction.response.send_message(f"{interaction.user.mention}のデータがないため、そもそも与える経験値がありません\n喋ろう!!!!", silent=True)
             return
         elif not targetdb:
+            newdb = User(userid=target.id, username=target.name)
+            session.add(newdb)
+            session.commit()
             await interaction.response.send_message(f"{target.mention}のデータがなかったため、只今作成しました\nもう一度コマンドを実行して付与してください", silent=True)
             return
         givedb_allexp = (givedb.level * 10000) + givedb.exp
@@ -76,7 +79,7 @@ class Cmdbotlevelcom(commands.Cog):
         session.commit()
         await interaction.response.send_message(f"{target.mention}に{givexp}与えました", silent=True)
 
-    @app_commands.command(name="setleveling", description="【運営用】参加者のLv/exp変更)")
+    @app_commands.command(name="csetleveling", description="【運営用】参加者のLv/exp変更)")
     @app_commands.describe(choice="選択肢", terget="変更する人", level="レベル", experience="経験値")
     @app_commands.choices(
         choice=[
@@ -92,7 +95,8 @@ class Cmdbotlevelcom(commands.Cog):
             await interaction.response.send_message("権限ないよ！", ephemeral=True)
             return
         if not setuserdb:
-            session.add(User(userid=terget.id, username=terget.name))
+            newdb = User(userid=terget.id, username=terget.name)
+            session.add(newdb)
             session.commit()
             await interaction.response.send_message(f"{terget.mention}のデータベースがまだなかったため只今生成しました\nもう一度コマンドを実行してください")
             return
@@ -111,13 +115,18 @@ class Cmdbotlevelcom(commands.Cog):
                 session.commit()
                 await interaction.response.send_message(f"{terget.mention}に{level}Lv{experience}exp分を付与しました", silent=True)
             case "remove":
-                setuserdb.exp -= experience
-                setuserdb.level -= level
-                setuserdb.allremoveexp += (level * 10000) + experience
-                while setuserdb.exp < 0:
-                    setuserdb.level -= 1
-                    setuserdb.exp += 10000
-                session.commit()
+                if ((setuserdb.level * 10000) + setuserdb.exp) < ((level * 10000) + experience):
+                    setuserdb.exp = 0
+                    setuserdb.level = 0
+                    session.commit()
+                else:
+                    setuserdb.exp -= experience
+                    setuserdb.level -= level
+                    setuserdb.allremoveexp += (level * 10000) + experience
+                    while setuserdb.exp < 0:
+                        setuserdb.level -= 1
+                        setuserdb.exp += 10000
+                    session.commit()
                 await interaction.response.send_message(f"{terget.mention}の{level}Lv{experience}exp分をはく奪しました", silent=True)
             case "set":
                 if experience >= 10000:
