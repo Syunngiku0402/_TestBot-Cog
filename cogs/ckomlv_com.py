@@ -80,7 +80,7 @@ class Cmdbotlevelcom(commands.Cog):
         await interaction.response.send_message(f"{target.mention}に{givexp}与えました", silent=True)
 
     @app_commands.command(name="csetleveling", description="【運営用】参加者のLv/exp変更)")
-    @app_commands.describe(choice="選択肢", terget="変更する人", level="レベル", experience="経験値")
+    @app_commands.describe(choice="選択肢", target="変更する人", level="レベル", experience="経験値")
     @app_commands.choices(
         choice=[
             app_commands.Choice(value="add", name="加算"),
@@ -88,17 +88,17 @@ class Cmdbotlevelcom(commands.Cog):
             app_commands.Choice(value="set", name="設定")
         ]
     )
-    async def setleveling(self, interaction: discord.Interaction, choice: app_commands.Choice[str], terget: discord.Member, level: int = 0, experience: int = 0):
-        setuserdb = session.query(User).filter_by(userid=terget.id).first()
+    async def setleveling(self, interaction: discord.Interaction, choice: app_commands.Choice[str], target: discord.Member, level: int = 0, experience: int = 0):
+        setuserdb = session.query(User).filter_by(userid=target.id).first()
 
         if interaction.guild.get_role(config.administrater_role_id) not in interaction.user.roles:
             await interaction.response.send_message("権限ないよ！", ephemeral=True)
             return
         if not setuserdb:
-            newdb = User(userid=terget.id, username=terget.name)
+            newdb = User(userid=target.id, username=target.name)
             session.add(newdb)
             session.commit()
-            await interaction.response.send_message(f"{terget.mention}のデータベースがまだなかったため只今生成しました\nもう一度コマンドを実行してください")
+            await interaction.response.send_message(f"{target.mention}のデータベースがまだなかったため只今生成しました\nもう一度コマンドを実行してください")
             return
         if level == 0 and experience == 0:
             await interaction.response.send_message("`level`または`experience`またはその両方に引数がありません\nどちらか一つは引数を指定してください")
@@ -113,9 +113,9 @@ class Cmdbotlevelcom(commands.Cog):
                     setuserdb.level += 1
                     setuserdb.exp -= 10000
                 session.commit()
-                await interaction.response.send_message(f"{terget.mention}に{level}Lv{experience}exp分を付与しました", silent=True)
+                await interaction.response.send_message(f"{target.mention}に{level}Lv{experience}exp分を付与しました", silent=True)
             case "remove":
-                if ((setuserdb.level * 10000) + setuserdb.exp) < ((level * 10000) + experience):
+                if ((setuserdb.level * 10000) + setuserdb.exp) <= ((level * 10000) + experience):
                     setuserdb.exp = 0
                     setuserdb.level = 0
                     session.commit()
@@ -127,7 +127,7 @@ class Cmdbotlevelcom(commands.Cog):
                         setuserdb.level -= 1
                         setuserdb.exp += 10000
                     session.commit()
-                await interaction.response.send_message(f"{terget.mention}の{level}Lv{experience}exp分をはく奪しました", silent=True)
+                await interaction.response.send_message(f"{target.mention}の{level}Lv{experience}exp分をはく奪しました", silent=True)
             case "set":
                 if experience >= 10000:
                     await interaction.response.send_message("`experience`が10000以上のため、設定できません")
@@ -135,7 +135,7 @@ class Cmdbotlevelcom(commands.Cog):
                 setuserdb.exp = experience
                 setuserdb.level = level
                 session.commit()
-                await interaction.response.send_message(f"{terget.mention}を{level}Lv{experience}expに設定しました", silent=True)
+                await interaction.response.send_message(f"{target.mention}を{level}Lv{experience}expに設定しました", silent=True)
 
 
 async def setup(bot: commands.Bot):
