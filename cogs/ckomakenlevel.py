@@ -1,9 +1,22 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from database import User, session
 import random
 import math
 from config import config
+from datetime import datetime
+
+
+@tasks.loop(seconds=60)
+async def loop():
+    now = datetime.now()
+    results = session.query(User).all()
+    if now.hour == 0 and now.minute == 0:
+        for i in results:
+            i.dailylogin = False
+        session.commit()
+    print("リセット完了")
+loop.start()
 
 
 class Cmdbotlevel(commands.Cog):
@@ -77,6 +90,23 @@ class Cmdbotlevel(commands.Cog):
                     userdb.level += 1
                     userdb.exp -= 10000
         session.commit()
+
+        if userdb.dailylogin is False:
+            userdb.dailylogin = True
+            userdb.dailylogincount + 1
+
+            if (userdb.dailylogincount % 10 == 0):
+                userdb.alladdexp += 300
+                userdb.exp += 300
+            else:
+                userdb.alladdexp += 100
+                userdb.exp += 100
+
+            if userdb.exp >= 10000:
+                userdb.level += 1
+                userdb.exp -= 10000
+        session.commit()
+
         print(f"{userdb.exp}")
 
 

@@ -23,6 +23,8 @@ class User(Base):
     question = Column(Boolean, default=False)
     freechat = Column(Boolean, default=False)
     anotherch = Column(Boolean, default=False)
+    dailylogin = Column(Boolean, default=False)
+    dailylogincount = Column(Integer, default=0)
     mee6level = Column(Integer, default=0)
     warnpt = Column(Integer, default=0)
     warnreason1 = Column(String)
