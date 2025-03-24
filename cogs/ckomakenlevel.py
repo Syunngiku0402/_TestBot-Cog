@@ -119,6 +119,37 @@ class Cmdbotlevel(commands.Cog):
 
         print(f"{userdb.exp}")
 
+    @commands.Cog.listener("on_message_delete")
+    async def on_message_delete(self, message: discord.Message):
+        deluserdb = session.query(User).filter_by(userid=message.author.id).first()
+        exp_per_delmsg = random.randint(75, 100)
+        if message.author.bot:
+            return
+        elif message.content.startswith("ぬるぽ"):
+            return
+        elif message.content.startswith("NullPointerException"):
+            return
+        elif message.content.startswith("!d bump"):
+            return
+        elif message.content.startswith("/bump"):
+            return
+        elif message.content.startswith("oruvanoruvan"):
+            return
+
+        if not deluserdb:
+            userdb = User(userid=message.author.id, username=message.author.name)
+            session.add(userdb)
+            session.commit()
+            return
+        deluserdb.chatcount -= 1
+        deluserdb.allremoveexp += exp_per_delmsg
+        deluserdb.exp -= exp_per_delmsg
+
+        if deluserdb.exp < 0:
+            deluserdb.level -= 1
+            deluserdb.exp += 10000
+        session.commit()
+
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Cmdbotlevel(bot))
