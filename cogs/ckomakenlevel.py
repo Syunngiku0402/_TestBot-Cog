@@ -14,8 +14,9 @@ async def loop():
     if now.hour == 0 and now.minute == 0:
         for i in results:
             i.dailylogin = False
+            i.dailygivexp = False
         session.commit()
-    print("リセット完了")
+        print("リセット完了")
 loop.start()
 
 
@@ -28,7 +29,16 @@ class Cmdbotlevel(commands.Cog):
 
         if message.author.bot:
             return
-
+        elif message.content.startswith("ぬるぽ"):
+            return
+        elif message.content.startswith("NullPointerException"):
+            return
+        elif message.content.startswith("!d bump"):
+            return
+        elif message.content.startswith("/bump"):
+            return
+        elif message.content.startswith("oruvanoruvan"):
+            return
         userdb = session.query(User).filter_by(userid=message.author.id).first()
 
         if not userdb:

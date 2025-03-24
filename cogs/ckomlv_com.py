@@ -50,8 +50,11 @@ class Cmdbotlevelcom(commands.Cog):
     async def cgivexp(self, interaction: discord.Interaction, target: discord.Member, givexp: int):
         givedb = session.query(User).filter_by(userid=interaction.user.id).first()
         targetdb = session.query(User).filter_by(userid=target.id).first()
-        if 0 >= givexp or givexp >= 10000:
-            await interaction.response.send_message("引数:givexpは1以上9999以下を指定してください", ephemeral=True)
+        if givedb.dailygivexp is True:
+            await interaction.response.send_message("今日はもうあげられないよ", ephemeral=True)
+            return
+        if 0 >= givexp or givexp >= 5000:
+            await interaction.response.send_message("引数:givexpは1以上4999以下を指定してください", ephemeral=True)
             return
         if not givedb:
             await interaction.response.send_message(f"{interaction.user.mention}のデータがないため、そもそも与える経験値がありません\n喋ろう!!!!", silent=True)
@@ -66,6 +69,7 @@ class Cmdbotlevelcom(commands.Cog):
         if givedb_allexp < givexp:
             await interaction.response.send_message(f"コマ研レベルに借金機能はありません(笑)\n所持経験値量：{givedb_allexp} < 付与予定経験値量：{givexp}", silent=True)
             return
+
         givedb.exp -= givexp
         givedb.allremoveexp += givexp
         while givedb.exp < 0:
@@ -76,6 +80,7 @@ class Cmdbotlevelcom(commands.Cog):
         while targetdb.exp >= 10000:
             targetdb.level += 1
             targetdb.exp -= 10000
+        givedb.dailygivexp = True
         session.commit()
         await interaction.response.send_message(f"{target.mention}に{givexp}与えました", silent=True)
 
