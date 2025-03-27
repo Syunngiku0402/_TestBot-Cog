@@ -27,7 +27,10 @@ class Cmdbotlevel(commands.Cog):
     @commands.Cog.listener("on_message")
     async def on_message(self, message: discord.Message):
 
+        userdb = session.query(User).filter_by(userid=message.author.id).first()
         if message.author.bot:
+            return
+        elif userdb.noxp is True:
             return
         elif message.content.startswith("ぬるぽ"):
             return
@@ -39,7 +42,6 @@ class Cmdbotlevel(commands.Cog):
             return
         elif message.content.startswith("oruvanoruvan"):
             return
-        userdb = session.query(User).filter_by(userid=message.author.id).first()
 
         if not userdb:
             userdb = User(userid=message.author.id, username=message.author.name)

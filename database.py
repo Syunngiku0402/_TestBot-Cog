@@ -19,6 +19,7 @@ class User(Base):
     chatcount = Column(Integer, default=0)
     level = Column(Integer, default=0)
     exp = Column(Integer, default=0)
+    noxp =  Column(Boolean, default=0)
     selfintro = Column(Boolean, default=False)
     question = Column(Boolean, default=False)
     freechat = Column(Boolean, default=False)

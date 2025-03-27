@@ -90,7 +90,8 @@ class Cmdbotlevelcom(commands.Cog):
         choice=[
             app_commands.Choice(value="add", name="加算"),
             app_commands.Choice(value="remove", name="減算"),
-            app_commands.Choice(value="set", name="設定")
+            app_commands.Choice(value="set", name="設定"),
+            app_commands.Choice(value="stop", name="権限停止")
         ]
     )
     async def setleveling(self, interaction: discord.Interaction, choice: app_commands.Choice[str], target: discord.Member, level: int = 0, experience: int = 0):
@@ -105,7 +106,7 @@ class Cmdbotlevelcom(commands.Cog):
             session.commit()
             await interaction.response.send_message(f"{target.mention}のデータベースがまだなかったため只今生成しました\nもう一度コマンドを実行してください")
             return
-        if level == 0 and experience == 0:
+        if level == 0 and experience == 0 and choice.value != "stop":
             await interaction.response.send_message("`level`または`experience`またはその両方に引数がありません\nどちらか一つは引数を指定してください")
             return
 
@@ -141,6 +142,15 @@ class Cmdbotlevelcom(commands.Cog):
                 setuserdb.level = level
                 session.commit()
                 await interaction.response.send_message(f"{target.mention}を{level}Lv{experience}expに設定しました", silent=True)
+            case "stop":
+                if setuserdb.noxp is False:
+                    setuserdb.noxp = True
+                    session.commit()
+                    await interaction.response.send_message(f"{target.mention}のレベルシステムを無効化しました", silent=True)
+                else:
+                    setuserdb.noxp = False
+                    session.commit()
+                    await interaction.response.send_message(f"{target.mention}のレベルシステムを有効化しました", silent=True)
 
 
 async def setup(bot: commands.Bot):
