@@ -126,6 +126,8 @@ def calculate(text):
                 eles[i] = float(eles[i])
             except TypeError:
                 pass
+            except ValueError:
+                pass
 
             # 定数を数へ変換
             if eles[i] in const.keys():
@@ -182,8 +184,8 @@ def calculate(text):
         i = -1
         while i < len(eles) - 1:
             i += 1
-            if isinstance(eles[i], float) and i < len(eles) - 1:
-                if isinstance(eles[i + 1], float):
+            if type(eles[i]) in {float, int} and i < len(eles) - 1:
+                if type(eles[i + 1]) in {float, int}:
                     x = eles.pop(i + 1)
                     eles[i] *= x
 
