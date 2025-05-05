@@ -30,7 +30,7 @@ async def coregacha(interaction: Interaction):
         embed.set_thumbnail(url=f"attachment://{filename}.png")
         return embed, file
     
-    for i, item in enumerate(root_table):
+    for i, item in enumerate(data):
         if item["seed_start"] >= num:
 
             seed_start = item["seed_start"]
