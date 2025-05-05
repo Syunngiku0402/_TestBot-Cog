@@ -4,6 +4,7 @@ from discord import app_commands, Interaction
 import discord
 from database import User, session, Oregacha, session2
 import random
+import json
 
 # ogint1 : cog.core_gacha.py使用中(１日のガチャによる経験値量の収支)
 
@@ -13,6 +14,44 @@ async def coregacha(interaction: Interaction):
     xpdb = session.query(User).filter_by(userid=interaction.user.id).first()
     ogdb = session2.query(Oregacha).filter_by(userid=interaction.user.id).first()
     alldb = session2.query(Oregacha).filter_by(userid="101").first()
+    jsonfile = 11111  # なんだっけここ？ｗ
+
+    def send_embed(description, xp, filename):
+        embed = discord.Embed(
+            title="ガチャ結果",
+            description=description,
+            color=0xff9b37
+        )
+        embed.set_author(name=interaction.user.display_name, icon_url=interaction.user.avatar.url)
+        embed.set_footer(text=f"本日残り: {10 - ogdb.dailygacha}回 / 今日の収支: {ogdb.ogint1 + xp}XP")
+        file = discord.File(f"assets/ore_gacha/{filename}.png", filename=f"{filename}.png")
+        embed.set_thumbnail(url=f"attachment://{filename}.png")
+        return embed, file
+    
+    for i, item in enumerate(root_table):
+        if item["seed_start"] >= num:
+
+            seed_start = item["seed_start"]
+            xp = item["xp"]
+
+            # ガチャ結果送信
+            embed, file = send_embed(
+            f"# {item["japanese"]}\n-# ** **\nNo.{num:06}\n確率: {round(probability)}%\n経験値: {item["xp"]} XP",
+            xp,
+            item["filename"]
+            )
+            await interaction.response.send_message(embed=embed, file=file, silent=True)
+
+            # 経験値等処理
+            xpdb.exp += xp
+            xpdb.alladdexp += xp
+            if xpdb.exp >= required_xp: # レベルアップ
+                xpdb.level += 1
+                xpdb.exp -= required_xp
+            session.commit()
+
+            return
+
 
     if num >= 99915:
         og1_embed = discord.Embed(
