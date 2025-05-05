@@ -14,7 +14,9 @@ async def coregacha(interaction: Interaction):
     xpdb = session.query(User).filter_by(userid=interaction.user.id).first()
     ogdb = session2.query(Oregacha).filter_by(userid=interaction.user.id).first()
     alldb = session2.query(Oregacha).filter_by(userid="101").first()
-    jsonfile = 11111  # なんだっけここ？ｗ
+    with open("data/json_ore_gacha.json") as f:
+        jsonfile = json.load(f)
+        data = jsonfile["gacha1"][0]
 
     def send_embed(description, xp, filename):
         embed = discord.Embed(
