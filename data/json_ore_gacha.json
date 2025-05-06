@@ -7,7 +7,8 @@
             "level":0,
             "xp":2200,
             "percent":"0.086%",
-            "database":"netheritei"
+            "database":"netheritei",
+            "emoji":"<:netherite_ingot:1368106278349570059>"
         },
         {
             "seed_start":99304,
@@ -16,7 +17,8 @@
             "level":0,
             "xp":400,
             "percent":"0.611%",
-            "database":"netherites"
+            "database":"netherites",
+            "emoji":"<:netherite_scrap:1368106092315410433>"
         },
         {
             "seed_start":93318,
@@ -25,7 +27,8 @@
             "level":0,
             "xp":180,
             "percent":"5.986%",
-            "database":"lapis"
+            "database":"lapis",
+            "emoji":"<:lapis_lazuli:1368106273282719764>"
         },
         {
             "seed_start":87423,
@@ -34,7 +37,8 @@
             "level":0,
             "xp":250,
             "percent":"5.895%",
-            "database":"diamond"
+            "database":"diamond",
+            "emoji":"<:diamond:1369307103650517022>"
         },
         {
             "seed_start":81084,
@@ -43,7 +47,8 @@
             "level":0,
             "xp":150,
             "percent":"6.339%",
-            "database":"gold"
+            "database":"gold",
+            "emoji":"<:gold_ingot:1368107085488717884>"
         },
         {
             "seed_start":73459,
@@ -52,7 +57,8 @@
             "level":0,
             "xp":130,
             "percent":"7.625%",
-            "database":"redstone"
+            "database":"redstone",
+            "emoji":"<:redstone_dust:1368106281923117086>"
         },
         {
             "seed_start":62868,
@@ -61,7 +67,8 @@
             "level":0,
             "xp":100,
             "percent":"10.591%",
-            "database":"emerald"
+            "database":"emerald",
+            "emoji":"<:emerald:1368106082051948544>"
         },
         {
             "seed_start":51307,
@@ -70,7 +77,8 @@
             "level":0,
             "xp":85,
             "percent":"11.561%",
-            "database":"iron"
+            "database":"iron",
+            "emoji":"<:iron_ingot:1245034369714749510>"
         },
         {
             "seed_start":35158,
@@ -79,7 +87,8 @@
             "level":0,
             "xp":40,
             "percent":"16.149%",
-            "database":"copper"
+            "database":"copper",
+            "emoji":"<:copper_ingot:1368106076326858772>"
         },
         {
             "seed_start":20597,
@@ -88,7 +97,8 @@
             "level":0,
             "xp":55,
             "percent":"14.561%",
-            "database":"quartz"
+            "database":"quartz",
+            "emoji":"<:nether_quartz:1368106276671721523>"
         },
         {
             "seed_start":8852,
@@ -97,7 +107,8 @@
             "level":0,
             "xp":80,
             "percent":"11.745%",
-            "database":"coal"
+            "database":"coal",
+            "emoji":"<:coal:1368107081386688522>"
         },
         {
             "seed_start":958,
@@ -106,7 +117,8 @@
             "level":0,
             "xp":-100,
             "percent":"7.894%",
-            "database":"breaking_pickaxe"
+            "database":"breaking_pickaxe",
+            "emoji":"<:breaking_pickaxe:1368106067028086815>"
         },
         {
             "seed_start":6,
@@ -115,7 +127,8 @@
             "level":0,
             "xp":-400,
             "percent":"0.952%",
-            "database":"broken_pickaxe"
+            "database":"broken_pickaxe",
+            "emoji":"<:broken_pickaxe:1368106074527371324>"
         },
         {
             "seed_start":1,
@@ -124,135 +137,150 @@
             "level":0,
             "xp":-1111,
             "percent":"0.005%",
-            "database":"death"
+            "database":"death",
+            "emoji":"<:death:1368106078210101279>"
         }
     ],
     "gacha2":[
         {
-            "seed_start":100000,
-            "japanese":"ネザライトインゴット",
-            "filename":"netherite_ingot",
-            "level":0,
-            "xp":2200,
-            "percent":"",
-            "database":""
+            "seed_start":99915,
+            "japanese":"ビーコン",
+            "filename":"Beacon",
+            "level":3,
+            "xp":0,
+            "percent":"0.086%",
+            "database":"beacon",
+            "emoji":"<:Beacon:1368106041950339204>"
         },
         {
-            "seed_start":99914,
-            "japanese":"ネザライトの欠片",
-            "filename":"netherite_scrap",
-            "level":0,
-            "xp":400,
-            "percent":"%",
-            "database":""
+            "seed_start":99304,
+            "japanese":"ネザライトブロック",
+            "filename":"Block_of_Netherite",
+            "level":2,
+            "xp":0,
+            "percent":"0.611%",
+            "database":"netheriteb",
+            "emoji":"<:Block_of_Netherite:1368106060258349198>"
         },
         {
-            "seed_start":99003,
-            "japanese":"ラピスラズリ",
-            "filename":"rapis_lazuli",
+            "seed_start":93318,
+            "japanese":"ラピスラズリブロック",
+            "filename":"Block_of_Lapis_Lazuli",
             "level":0,
-            "xp":180,
-            "percent":"%",
-            "database":""
+            "xp":1620,
+            "percent":"5.986%",
+            "database":"lapisb",
+            "emoji":"<:Block_of_Lapis_Lazuli:1368106058102476921>"
         },
         {
-            "seed_start":93117,
-            "japanese":"ダイヤモンド",
-            "filename":"diamond",
+            "seed_start":87423,
+            "japanese":"ダイヤモンドブロック",
+            "filename":"Block_of_Diamond",
             "level":0,
-            "xp":250,
-            "percent":"%",
-            "database":""
+            "xp":2250,
+            "percent":"5.895%",
+            "database":"diamondb",
+            "emoji":"<:Block_of_Diamond:1368106047914381423>"
         },
         {
-            "seed_start":87222,
-            "japanese":"金のインゴット",
-            "filename":"gold_ingot",
+            "seed_start":81084,
+            "japanese":"金インゴットブロック",
+            "filename":"Block_of_Gold",
             "level":0,
-            "xp":150,
-            "percent":"%",
-            "database":""
+            "xp":1350,
+            "percent":"6.339%",
+            "database":"goldb",
+            "emoji":"<:Block_of_Gold:1368106051831988275>"
         },
         {
-            "seed_start":81083,
-            "japanese":"レッドストーン",
-            "filename":"redstone",
+            "seed_start":73459,
+            "japanese":"レッドストーンブロック",
+            "filename":"Block_of_Redstone",
             "level":0,
-            "xp":130,
-            "percent":"%",
-            "database":""
+            "xp":1170,
+            "percent":"7.625%",
+            "database":"redstoneb",
+            "emoji":"<:Block_of_Redstone:1368106064247128075>"
         },
         {
-            "seed_start":73458,
-            "japanese":"エメラルド",
-            "filename":"emerald",
+            "seed_start":62868,
+            "japanese":"エメラルドブロック",
+            "filename":"Block_of_Emerald",
             "level":0,
-            "xp":100,
-            "percent":"%",
-            "database":""
+            "xp":900,
+            "percent":"10.591%",
+            "database":"emeraldb",
+            "emoji":"<:Block_of_Emerald:1368106049953071144>"
         },
         {
-            "seed_start":62867,
-            "japanese":"鉄のインゴット",
-            "filename":"iron_ingot",
+            "seed_start":51307,
+            "japanese":"鉄ブロック",
+            "filename":"Block_of_Iron",
             "level":0,
-            "xp":85,
-            "percent":"%",
-            "database":""
+            "xp":765,
+            "percent":"11.561%",
+            "database":"ironb",
+            "emoji":"<:Block_of_Iron:1368106055820640338>"
         },
         {
-            "seed_start":51306,
-            "japanese":"銅のインゴット",
-            "filename":"copper_ingot",
+            "seed_start":35158,
+            "japanese":"銅ブロック",
+            "filename":"Block_of_Copper",
             "level":0,
-            "xp":40,
-            "percent":"%",
-            "database":""
+            "xp":360,
+            "percent":"16.149%",
+            "database":"copperb",
+            "emoji":"<:Block_of_Copper:1368106045779476510>"
         },
         {
-            "seed_start":35157,
-            "japanese":"ネザークォーツ",
-            "filename":"nether_quartz",
+            "seed_start":20597,
+            "japanese":"ネザークオーツブロック",
+            "filename":"Block_of_Quartz",
             "level":0,
-            "xp":55,
-            "percent":"%",
-            "database":""
+            "xp":220,
+            "percent":"14.561%",
+            "database":"quartzb",
+            "emoji":"<:Block_of_Quartz:1368106062145785908>"
         },
         {
-            "seed_start":20596,
-            "japanese":"石炭",
-            "filename":"coal",
+            "seed_start":8852,
+            "japanese":"石炭ブロック",
+            "filename":"Block_of_Coal",
             "level":0,
-            "xp":80,
-            "percent":"%",
-            "database":""
+            "xp":720,
+            "percent":"11.745%",
+            "database":"coalb",
+            "emoji":"<:Block_of_Coal:1368106043619672204>"
         },
         {
-            "seed_start":8851,
-            "japanese":"壊れかけのツルハシ",
-            "filename":"breaking_pickaxe",
-            "level":0,
-            "xp":-100,
-            "percent":"%",
-            "database":""
-        },
-        {
-            "seed_start":957,
+            "seed_start":958,
             "japanese":"壊れたツルハシ",
             "filename":"broken_pickaxe",
             "level":0,
-            "xp":-400,
-            "percent":"%",
-            "database":""
+            "xp":-1000,
+            "percent":"7.894%",
+            "database":"broken_pickaxe9",
+            "emoji":"<:broken_pickaxe:1368106074527371324>"
         },
         {
-            "seed_start":5,
+            "seed_start":6,
             "japanese":"死亡",
             "filename":"death",
             "level":0,
-            "xp":-1111,
-            "percent":"%",
-            "database":""
+            "xp":-4000,
+            "percent":"0.952%",
+            "database":"death9",
+            "emoji":"<:death:1368106078210101279>"
+        },
+        {
+            "seed_start":1,
+            "japanese":"ワールドデータ破損",
+            "filename":"missing_model",
+            "level":-1,
+            "xp":0,
+            "percent":"0.005%",
+            "database":"unkownworld",
+            "emoji":"<:missing_model:1368106274994262026>"
         }
     ]
 }
