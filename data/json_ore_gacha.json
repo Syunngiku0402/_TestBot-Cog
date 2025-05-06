@@ -1,130 +1,130 @@
 {
     "gacha1":[
         {
-            "seed_start":100000,
+            "seed_start":99915,
             "japanese":"ネザライトインゴット",
             "filename":"netherite_ingot",
             "level":0,
             "xp":2200,
-            "percent":"%",
-            "database":""
+            "percent":"0.086%",
+            "database":"netheritei"
         },
         {
-            "seed_start":99914,
+            "seed_start":99304,
             "japanese":"ネザライトの欠片",
             "filename":"netherite_scrap",
             "level":0,
             "xp":400,
-            "percent":"%",
-            "database":""
+            "percent":"0.611%",
+            "database":"netherites"
         },
         {
-            "seed_start":99003,
+            "seed_start":93318,
             "japanese":"ラピスラズリ",
             "filename":"rapis_lazuli",
             "level":0,
             "xp":180,
-            "percent":"%",
-            "database":""
+            "percent":"5.986%",
+            "database":"lapis"
         },
         {
-            "seed_start":93117,
+            "seed_start":87423,
             "japanese":"ダイヤモンド",
             "filename":"diamond",
             "level":0,
             "xp":250,
-            "percent":"%",
-            "database":""
+            "percent":"5.895%",
+            "database":"diamond"
         },
         {
-            "seed_start":87222,
+            "seed_start":81084,
             "japanese":"金のインゴット",
             "filename":"gold_ingot",
             "level":0,
             "xp":150,
-            "percent":"%",
-            "database":""
+            "percent":"6.339%",
+            "database":"gold"
         },
         {
-            "seed_start":81083,
+            "seed_start":73459,
             "japanese":"レッドストーン",
             "filename":"redstone",
             "level":0,
             "xp":130,
-            "percent":"%",
-            "database":""
+            "percent":"7.625%",
+            "database":"redstone"
         },
         {
-            "seed_start":73458,
+            "seed_start":62868,
             "japanese":"エメラルド",
             "filename":"emerald",
             "level":0,
             "xp":100,
-            "percent":"%",
-            "database":""
+            "percent":"10.591%",
+            "database":"emerald"
         },
         {
-            "seed_start":62867,
+            "seed_start":51307,
             "japanese":"鉄のインゴット",
             "filename":"iron_ingot",
             "level":0,
             "xp":85,
-            "percent":"%",
-            "database":""
+            "percent":"11.561%",
+            "database":"iron"
         },
         {
-            "seed_start":51306,
+            "seed_start":35158,
             "japanese":"銅のインゴット",
             "filename":"copper_ingot",
             "level":0,
             "xp":40,
-            "percent":"%",
-            "database":""
+            "percent":"16.149%",
+            "database":"copper"
         },
         {
-            "seed_start":35157,
+            "seed_start":20597,
             "japanese":"ネザークォーツ",
             "filename":"nether_quartz",
             "level":0,
             "xp":55,
-            "percent":"%",
-            "database":""
+            "percent":"14.561%",
+            "database":"quartz"
         },
         {
-            "seed_start":20596,
+            "seed_start":8852,
             "japanese":"石炭",
             "filename":"coal",
             "level":0,
             "xp":80,
-            "percent":"%",
-            "database":""
+            "percent":"11.745%",
+            "database":"coal"
         },
         {
-            "seed_start":8851,
+            "seed_start":958,
             "japanese":"壊れかけのツルハシ",
             "filename":"breaking_pickaxe",
             "level":0,
             "xp":-100,
-            "percent":"%",
-            "database":""
+            "percent":"7.894%",
+            "database":"breaking_pickaxe"
         },
         {
-            "seed_start":957,
+            "seed_start":6,
             "japanese":"壊れたツルハシ",
             "filename":"broken_pickaxe",
             "level":0,
             "xp":-400,
-            "percent":"%",
-            "database":""
+            "percent":"0.952%",
+            "database":"broken_pickaxe"
         },
         {
-            "seed_start":5,
+            "seed_start":1,
             "japanese":"死亡",
             "filename":"death",
             "level":0,
             "xp":-1111,
-            "percent":"%",
-            "database":""
+            "percent":"0.005%",
+            "database":"death"
         }
     ],
     "gacha2":[
@@ -134,7 +134,7 @@
             "filename":"netherite_ingot",
             "level":0,
             "xp":2200,
-            "percent":"%",
+            "percent":"",
             "database":""
         },
         {
