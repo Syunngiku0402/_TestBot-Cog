@@ -3,7 +3,7 @@ from discord.ext import commands, tasks
 from database import User, session, Oregacha, session2
 import random
 import math
-from config.config import config
+from config import config
 from datetime import datetime
 
 

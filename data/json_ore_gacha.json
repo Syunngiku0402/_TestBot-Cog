@@ -21,7 +21,7 @@
         {
             "seed_start":93318,
             "japanese":"ラピスラズリ",
-            "filename":"rapis_lazuli",
+            "filename":"lapis_lazuli",
             "level":0,
             "xp":180,
             "percent":"5.986%",
@@ -48,7 +48,7 @@
         {
             "seed_start":73459,
             "japanese":"レッドストーン",
-            "filename":"redstone",
+            "filename":"redstone_dust",
             "level":0,
             "xp":130,
             "percent":"7.625%",
