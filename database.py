@@ -110,7 +110,7 @@ class Oregacha(Base2):
 
     dailygacha = Column(Integer, default=0)
 
-    ogstr1 = Column(String)
+    ogstr1 = Column(String)  # cog.core_gacha.py使用中(１日のガチャによる結果表示)
     ogstr2 = Column(String)
     ogstr3 = Column(String)
     ogstr4 = Column(String)
