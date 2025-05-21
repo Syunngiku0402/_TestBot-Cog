@@ -27,9 +27,7 @@ async def coregacha(interaction: Interaction):
                 description=f"# {item["japanese"]}\n-# ** **\nNo.{num:06}\n確率: {item["percent"]}\n経験値: {xp} XP",
                 color=0xff9b37
             )
-            print("a")
-            print(f"{ogdb.ogstr1 + item["japanese"]}")
-            print("b")
+
             embed.set_author(name=interaction.user.display_name, icon_url=f"https://cdn.discordapp.com/embed/avatars/{random.randint(0, 5)}.png" if interaction.user.avatar is None else interaction.user.avatar.url)
             embed.set_footer(text=f"本日残り: {10 - ogdb.dailygacha}回 / 今日の収支: {ogdb.ogint1 + xp}XP")
             file1 = discord.File(f"assets/ore_gacha/{item["filename"]}.png", filename=f"{item["filename"]}.png")
@@ -52,12 +50,11 @@ async def coregacha(interaction: Interaction):
             session.commit()
             ogdb.allcount += 1
             exec(f"ogdb.{item["database"]} += 1")
-            exec(f"{str(ogdb.ogstr1)} + {str(item["emoji"])}")
+            ogdb.ogstr1 += item["emoji"]
             ogdb.ogint1 += xp
             alldb.allcount += 1
             exec(f"alldb.{item["database"]} += 1")
             session2.commit()
-            session.commit()
             return
 
 
@@ -136,7 +133,7 @@ class COregacha(commands.Cog):
         if userdb.noxp is True:
             await interaction.response.send_message("あなたは経験値システムが無効化されてるからガチャ回せません", ephemeral=True)
             return
-        if gachadb.dailygacha >= 10:
+        if gachadb.dailygacha >= 100:
             await interaction.response.send_message(f"本日のガチャ回数が上限に達しました\nまた明日回してね(^^♪\n-# 00:00:00～00:01:00に更新されます\n本日の収支は{gachadb.ogint1}XPでした", ephemeral=True)
             return
         now = datetime.now()
@@ -149,11 +146,11 @@ class COregacha(commands.Cog):
             session2.commit()
             await coregacha(interaction)
 
-    # @app_commands.command(name="core", description="鉱石ガチャ登録")
-    # async def coregachatouroku(self, interaction: discord.Interaction):
-    #     session2.add(Oregacha(userid=101, username="合計"))
-    #     session2.commit()
-    #     await interaction.response.send_message("合計データを登録しました", ephemeral=True)
+    @app_commands.command(name="core", description="鉱石ガチャ登録")
+    async def coregachatouroku(self, interaction: discord.Interaction):
+        session2.add(Oregacha(userid=101, username="合計"))
+        session2.commit()
+        await interaction.response.send_message("合計データを登録しました", ephemeral=True)
 
 
 async def setup(bot: commands.Bot):
