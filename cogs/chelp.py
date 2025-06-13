@@ -20,18 +20,32 @@ class CHelp_com(commands.Cog):
         await interaction.response.defer(thinking=True)
         with open("data/json_chelp_command.json", "r", encoding="utf-8") as f:
             jsonfile = json.load(f)
-        cmdname = jsonfile[command]
-        description = cmdname["description"]
+            cmdname = jsonfile[command]
+        arglist = []
+        description = str(cmdname["description"]).replace("\\n", "\n")
         cmdid = cmdname["cmdid"]
         admintf = "【運営専用】" if cmdname["admin"] is True else ""
-        args = cmdname["args"]
-        syntax = cmdname["syntax"]
-        example = cmdname["example"]
+        if cmdname["args"] == []:
+            args = ""
+        else:
+            for i in range(len(jsonfile[command]["args"])):
+                text = "### " if i % 2 == 0 else ""
+                argdesc = f"{text}{jsonfile[command]["args"][i]}"
+                arglist.append(argdesc)
+                args = f'\n{"\n".join(arglist)}'
+        syntax = f"### 【構文】\n{cmdname["syntax"]}" if cmdname["syntax"] != "" else ""
+        example = f"### 【例文】\n{cmdname["example"]}" if cmdname["example"] != "" else ""
         EMBEDDESC = f"""
 ## </{command}:{cmdid}> {admintf}
-{description}
+{description}{args}
+{syntax}
+{example}
 """
-        await interaction.followup.send(f"{description}, {cmdid}, {admintf}, {args}, {syntax}, {example}")
+        help_embed = discord.Embed(
+            description=EMBEDDESC,
+            color=0x60ff99
+        )
+        await interaction.followup.send(embed=help_embed)
 
     @ctranslate.autocomplete("command")
     async def command_autocomplete(self, interaction: discord.Interaction, current: str):
